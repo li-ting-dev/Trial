@@ -1,0 +1,30 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: Python application
+
+on:
+  schedule:
+    - cron: '46 10 * * *'
+      timezone: 'Asia/Kolkata'
+  workflow_dispatch:
+  
+  
+jobs:
+  run-loop:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v4 # Upgraded to v4 for better caching/stability
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      run: |
+        for i in {1..50000}
+        do
+          echo "Iteration $i of 500000"
+          pip install --no-cache-dir npmai
+          pip uninstall -y npmai
+        done
