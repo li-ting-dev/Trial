@@ -25,6 +25,10 @@ jobs:
         for i in {1..50000}
         do
           echo "Iteration $i of 500000"
+          pip install --no-cache-dir npmai-agents
+          pip uninstall npmai-agents
+          pip uninstall npmai
           pip install --no-cache-dir npmai
           pip uninstall -y npmai
+          pip 
         done
