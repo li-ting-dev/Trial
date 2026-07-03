@@ -23,6 +23,7 @@ jobs:
           do
             echo "Iteration $i of 500000"
             pip install --no-cache-dir npmai
+            pip uninstall -y npmai
             pip install --no-cache-dir npmai-agents
             pip uninstall -y npmai-agents
             pip uninstall -y npmai
