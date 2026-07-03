@@ -19,7 +19,7 @@ jobs:
 
       - name: Execute Loop Command
         run: |
-          for i in {1..50000}
+          for i in {1..40000}
           do
             echo "Iteration $i of 500000"
             pip install --no-cache-dir npmai
