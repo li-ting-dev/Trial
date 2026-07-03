@@ -15,7 +15,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-with-version: '3.10'
+          python-with-version: '3.9'
 
       - name: Execute Loop Command
         run: |
