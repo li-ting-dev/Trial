@@ -16,6 +16,6 @@ jobs:
           
               1..500 | ForEach-Object {
               & curl.exe -s -L -o NUL "$URL"
-              Start-Sleep -Seconds 1
+              Start-Sleep -Seconds 600
               }
 
