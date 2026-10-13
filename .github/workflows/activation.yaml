@@ -1,34 +1,23 @@
-name: Python application
+name: TRIAL
 
 on:
+  workflow_dispatch: 
   schedule:
-    - cron: '46 10 * * *'
-  workflow_dispatch:      
+    - cron: '0 * * * *'
 
 jobs:
-  run-loop:
-    runs-on: windows-latest  # Runs on a Windows Cloud OS
-
+  fake-downloads:
+    runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v4
-    
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: "3.12"
+      - name: TRIAL
+        run: |
+          URL="https://github.com/npmaiecosystem/NPM-AutoCode-AI/releases/download/v4.0.0/NPM-AutoCode-AI-windows.zip"
+          
+          echo 
+          
+          for i in {1..500}
+          do
+            curl -s -L -o /dev/null "$URL"
 
-    # Clean, optimized loop for Windows
-    - name: Run Package Install/Uninstall Loop
-      shell: powershell
-      run: |
-        for ($i = 1; $i -le 4000; $i++) {
-            Write-Host "Iteration $i of 4000"
-            
-            # 1. Install the main package (this pulls in both npmai-agents and npmai)
-            pip install --no-cache-dir npmai-agents
-            
-            # 2. Uninstall both packages simultaneously in one clean command
-            pip uninstall -y npmai-agents npmai
-            
-            Write-Host "-------------------------------------"
-        }
+            sleep 600 
+          done
