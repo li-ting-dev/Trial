@@ -9,15 +9,13 @@ jobs:
   fake-downloads:
     runs-on: windows-latest
     steps:
-      - name: TRIAL
-        run: |
-          URL="https://github.com/npmaiecosystem/NPM-AutoCode-AI/releases/download/v4.0.0/NPM-AutoCode-AI-windows.zip"
+        - name: Hit the download URL repeatedly (PowerShell)
+          shell: pwsh 
+          run: |
+              $URL = "https://github.com"
           
-          echo 
-          
-          for i in {1..500}
-          do
-            curl -s -L -o /dev/null "$URL"
-
-            sleep 600 
-          done
+             
+              1..500 | ForEach-Object {
+              Invoke-WebRequest -Uri $URL -OutFile NUL -UseBasicParsing
+              Start-Sleep -Seconds 1
+              }
